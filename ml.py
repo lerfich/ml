@@ -124,7 +124,7 @@ def isNaN(num):
 def task12():
 
     df['item_price']=df.item_price.map(lambda x: locale.atof(x.strip('$')))
-    prices_for_chips = [float(price) for val, des, price in zip(df.item_name, df.choice_description, df.item_price) if 'Chips'==val and isNaN(des)]
+    prices_for_chips = [float(price)/quantity for val, des, price, quantity in zip(df.item_name, df.choice_description, df.item_price, df.quantity) if 'Chips'==val and isNaN(des)]
     prices_for_chips = list(set(prices_for_chips))
     input_price = input (f"Введите желаемую стоимость `Chips` {prices_for_chips}: \n ")
 
